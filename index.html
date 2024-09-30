@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario CV</title>
+    <link rel="stylesheet" href="styles/form_styles.css">
+</head>
+<body>
+    <div class="cv-container">
+        <h1>Formulario CV</h1>
+        <form method="post" action="process_form.php">
+            <label for="nombre_apellidos">Nombre y Apellidos:</label>
+            <input type="text" id="nombre_apellidos" name="nombre_apellidos" required><br><br>
+
+            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required><br><br>
+
+            <label for="ocupacion">Ocupación:</label>
+            <input type="text" id="ocupacion" name="ocupacion" required><br><br>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required><br><br>
+
+            <label for="nacionalidad">Nacionalidad:</label>
+            <select id="nacionalidad" name="nacionalidad" required>
+                <option value="">Seleccione una opción</option>
+                <option value="Alemana">Alemana</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Australiana">Australiana</option>
+                <option value="Brasileña">Brasileña</option>
+                <option value="Británica">Británica</option>
+                <option value="Canadiense">Canadiense</option>
+                <option value="Chilena">Chilena</option>
+                <option value="China">China</option>
+                <option value="Colombiana">Colombiana</option>
+                <option value="Estadounidense">Estadounidense</option>
+                <option value="Española">Española</option>
+                <option value="Francesa">Francesa</option>
+                <option value="India">India</option>
+                <option value="Italiana">Italiana</option>
+                <option value="Japonesa">Japonesa</option>
+                <option value="Mexicana">Mexicana</option>
+                <option value="Peruana">Peruana</option>
+                <option value="Rusa">Rusa</option>
+                <option value="Sudafricana">Sudafricana</option>
+                <option value="Sueca">Sueca</option>
+            </select><br><br>
+
+            <label>Nivel de inglés:</label><br>
+            <div class="radio-group">
+            <input type="radio" id="basico" name="nivel_ingles" value="básico" required>
+            <label for="basico">Básico</label><br>
+            <input type="radio" id="intermedio" name="nivel_ingles" value="intermedio">
+            <label for="intermedio">Intermedio</label><br>
+            <input type="radio" id="avanzado" name="nivel_ingles" value="avanzado">
+            <label for="avanzado">Avanzado</label><br>
+            <input type="radio" id="fluido" name="nivel_ingles" value="fluido">
+            <label for="fluido">Fluido</label><br>
+            </div>
+
+            <label for="lenguajes_programacion">Lenguajes de programación:</label>
+            <select id="lenguajes_programacion" name="lenguajes_programacion[]" multiple required>
+                <option value="cpp">C++</option>
+                <option value="fortran">Fortran</option>
+                <option value="go">Go</option>
+                <option value="lua">Lua</option>
+                <option value="perl">Perl</option>
+                <option value="python">Python</option>
+                <option value="r">R</option>
+                <option value="ruby">Ruby</option>
+                <option value="rust">Rust</option>
+                <option value="scala">Scala</option>
+                <option value="swift">Swift</option>
+            </select><br><br>
+
+            <label for="aptitudes">Aptitudes:</label>
+            <input type="text" id="aptitudes" name="aptitudes" list="aptitudes_list" required>
+            <datalist id="aptitudes_list">
+                <option value="Adaptabilidad">Adaptabilidad</option>
+                <option value="Creatividad">Creatividad</option>
+                <option value="Comunicación">Comunicación</option>
+                <option value="Liderazgo">Liderazgo</option>
+                <option value="Resolución de problemas">Resolución de problemas</option>
+                <option value="Trabajo en equipo">Trabajo en equipo</option>
+            </datalist><br><br>
+
+            <label>Habilidades:</label>
+            <div class="checkbox-group">
+            <input type="checkbox" id="analisis" name="habilidades[]" value="Análisis de datos">
+            <label for="analisis">Análisis de datos</label>
+            <input type="checkbox" id="atencion_cliente" name="habilidades[]" value="Atención al cliente">
+            <label for="atencion_cliente">Atención al cliente</label>
+            <input type="checkbox" id="desarrollo_web" name="habilidades[]" value="Desarrollo web">
+            <label for="desarrollo_web">Desarrollo web</label>
+            <input type="checkbox" id="diseno" name="habilidades[]" value="Diseño gráfico">
+            <label for="diseno">Diseño gráfico</label>
+            <input type="checkbox" id="gestion" name="habilidades[]" value="Gestión de proyectos">
+            <label for="gestion">Gestión de proyectos</label>
+            <input type="checkbox" id="marketing" name="habilidades[]" value="Marketing digital">
+            <label for="marketing">Marketing digital</label>
+            </div>
+
+            <label for="perfil">Perfil:</label>
+            <textarea id="perfil" name="perfil" rows="4" cols="50" required></textarea>
+
+            <label>Experiencia Laboral</label>
+            <div id="experiencia-container"></div>
+            <button type="button" class="btn-add" onclick="addField('experiencia')">Agregar</button>
+
+            <label>Formación</label>
+            <div id="formacion-container"></div>
+            <button type="button" class="btn-add" onclick="addField('formacion')">Agregar</button>
+
+            <label>Idiomas</label>
+            <div id="idiomas-container"></div>
+            <button type="button" class="btn-add" onclick="addField('idiomas')">Agregar</button>
+
+            <input type="submit" value="Enviar"> 
+            
+        </form>
+    </div>
+
+    <script>
+        function addField(fieldName) {
+            var container = document.getElementById(fieldName + '-container');
+            var newField = document.createElement('div');
+            newField.className = 'dynamic-field';
+            newField.innerHTML = `
+                <input type="text" name="${fieldName}[${container.children.length}][titulo]" placeholder="Título">
+                <input type="text" name="${fieldName}[${container.children.length}][descripcion]" placeholder="Descripción">
+                <button type="button" onclick="removeField(this)">Eliminar</button>
+            `;
+            container.appendChild(newField);
+        }
+
+        function removeField(button) {
+            button.parentElement.remove();
+        }
+    </script>
+</body>
+</html>
