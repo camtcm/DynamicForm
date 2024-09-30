@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333; 
+    background-color: #f0f0f0;
+}
+
+.cv-container {
+    max-width: 1000px; 
+    margin: 20px auto; 
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.header-text {
+    flex: 2;
+    padding-left: 30px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.5em;
+    font-weight: 100;
+}
+
+main {
+    display: flex;
+}
+
+.lateral {
+    flex: 1;
+    background: #f4f4f4;
+    padding: 30px;
+}
+
+.lateral section {
+    margin-bottom: 30px;
+}
+
+.contenido {
+    flex: 2;
+    padding: 30px;
+}
+
+h2 {
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.lateral img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.trabajo, .educación {
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.año {
+    color: #888;
+    font-weight: normal;
+    font-style: italic;
+}
+
+ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+    
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    header img {
+        margin-bottom: 20px;
+    }
+
+    .header-text {
+        padding-left: 0;
+    }
+}
