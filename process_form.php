@@ -24,20 +24,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user_id = $stmt->insert_id;
 
         if (isset($_POST['experiencia']) && is_array($_POST['experiencia'])) {
-            $exp_sql = "INSERT INTO experiencia (user_id, titulo, descripcion) VALUES (?, ?, ?)";
+            $exp_sql = "INSERT INTO experiencia (user_id, titulo, lugar, inicio, fin, descripcion) VALUES (?, ?, ?, ?, ?, ?)";
             $exp_stmt = $conn->prepare($exp_sql);
             foreach ($_POST['experiencia'] as $exp) {
-                $exp_stmt->bind_param("iss", $user_id, $exp['titulo'], $exp['descripcion']);
+                $exp_stmt->bind_param("issiis", $user_id, $exp['titulo'], $exp['lugar'], $exp['inicio'], $exp['fin'], $exp['descripcion'] );
                 $exp_stmt->execute();
             }
             $exp_stmt->close();
         }
 
         if (isset($_POST['formacion']) && is_array($_POST['formacion'])) {
-            $form_sql = "INSERT INTO formacion (user_id, titulo, descripcion) VALUES (?, ?, ?)";
+            $form_sql = "INSERT INTO formacion (user_id, titulo, lugar, inicio, fin, descripcion) VALUES (?, ?, ?, ?, ?, ?)";
+            $exp_stmt = $conn->prepare($exp_sql);
             $form_stmt = $conn->prepare($form_sql);
             foreach ($_POST['formacion'] as $form) {
-                $form_stmt->bind_param("iss", $user_id, $form['titulo'], $form['descripcion']);
+                $form_stmt->bind_param("issiis", $user_id, $form['titulo'], $form['lugar'], $form['inicio'], $form['fin'], $form['descripcion']);
                 $form_stmt->execute();
             }
             $form_stmt->close();

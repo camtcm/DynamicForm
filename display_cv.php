@@ -92,7 +92,9 @@ $conn->close();
                     <h2>EXPERIENCIA LABORAL</h2>
                     <?php 
                     foreach ($experiencia as $exp) {
+                        // echo '<h3>' . $exp['titulo'] . ' | <span class="año">'. $exp['inicio'] .' - '. $exp['fin'].'</span></h3> '; 
                         echo '<h3>' . $exp['titulo'] . '</h3>';
+                        echo '<p><b>' . $exp['lugar'] .'</b> | <span class="año">'. $exp['inicio'] .' - '. $exp['fin'].'</span></p> '; 
                         echo '<p>' . nl2br($exp['descripcion']) . '</p>';
                     }
                     ?>
@@ -101,7 +103,9 @@ $conn->close();
                     <h2>FORMACIÓN</h2>
                     <?php 
                     foreach ($formacion as $form) {
+                        // echo '<h3>' . $form['titulo'] . ' | '. $form['inicio'] .' - '. $form['fin'] . '</h3>';
                         echo '<h3>' . $form['titulo'] . '</h3>';
+                        echo '<p><b>' . $form['lugar'] .'</b> | <span class="año">'. $form['inicio'] .' - '. $form['fin'].'</span></p> '; 
                         echo '<p>' . nl2br($form['descripcion']) . '</p>';
                     }
                     ?>
