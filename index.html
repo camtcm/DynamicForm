@@ -131,9 +131,25 @@
             newField.className = 'dynamic-field';
             newField.innerHTML = `
                 <input type="text" name="${fieldName}[${container.children.length}][titulo]" placeholder="Título">
-                <input type="text" name="${fieldName}[${container.children.length}][descripcion]" placeholder="Descripción">
-                <button type="button" onclick="removeField(this)">Eliminar</button>
             `;
+
+            if (fieldName != 'idiomas') {
+                newField.innerHTML += `
+                <input type="text" name="${fieldName}[${container.children.length}][lugar]" placeholder="Lugar">
+                <div class ="row">
+                <p>Inicio: </p>
+                <input type="number" id="${fieldName}-end-year-${container.children.length}" name="${fieldName}[${container.children.length}][inicio]" min="1900" max="2100" placeholder="YYYY">
+                <p>Fin: </p>
+                <input type="number" id="${fieldName}-end-year-${container.children.length}" name="${fieldName}[${container.children.length}][fin]" min="1900" max="2100" placeholder="YYYY">
+                </div>
+                `;
+            }
+            
+            newField.innerHTML+=`
+            <input type="text" name="${fieldName}[${container.children.length}][descripcion]" placeholder="Descripción">
+            <button type="button" onclick="removeField(this)">Eliminar</button>
+            `;
+            
             container.appendChild(newField);
         }
 
