@@ -2,7 +2,7 @@
 require_once 'db_connect.php';
 
 if (!isset($_GET['id'])) {
-    die("No se especificó un ID de usuario.");
+    die("ID no especificado");
 }
 $user_id = intval($_GET['id']);
 
@@ -10,7 +10,7 @@ $sql = "SELECT * FROM user_info WHERE id = $user_id";
 $result = $conn->query($sql);
 
 if ($result->num_rows === 0) {
-    die("No se encontró el usuario especificado.");
+    die("Usuario no encontrado");
 }
 
 $user = $result->fetch_assoc(); 
