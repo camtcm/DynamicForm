@@ -1,4 +1,3 @@
--- cv_database.sql
 CREATE TABLE user_info (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre_apellidos VARCHAR(255) NOT NULL,
