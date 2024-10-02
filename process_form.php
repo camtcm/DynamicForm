@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['experiencia']) && is_array($_POST['experiencia'])) {
             $exp_sql = "INSERT INTO experiencia (user_id, titulo, lugar, inicio, fin, descripcion) VALUES (?, ?, ?, ?, ?, ?)";
             $exp_stmt = $conn->prepare($exp_sql);
-            foreach ($_POST['experiencia'] as $exp) { // Recorre el array (campos) para extraer los dato
+            foreach ($_POST['experiencia'] as $exp) { // Recorre el array (campos) para extraer los datos
                 $exp_stmt->bind_param("issiis", $user_id, $exp['titulo'], $exp['lugar'], $exp['inicio'], $exp['fin'], $exp['descripcion'] );
                 $exp_stmt->execute();
             }
