@@ -6,18 +6,18 @@ if (!isset($_GET['id'])) {
 }
 $user_id = intval($_GET['id']);
 
-$sql = "SELECT * FROM user_info WHERE id = $user_id"; 
+$sql = "SELECT * FROM user_info WHERE id = $user_id"; // Todos los campos del usuario
 $result = $conn->query($sql);
 
 if ($result->num_rows === 0) {
     die("Usuario no encontrado");
 }
 
-$user = $result->fetch_assoc(); 
+$user = $result->fetch_assoc(); // Array asociativo (recupera una fila)
 
 $sql = "SELECT * FROM experiencia WHERE user_id = $user_id"; 
 $result = $conn->query($sql);
-$experiencia = $result->fetch_all(MYSQLI_ASSOC); 
+$experiencia = $result->fetch_all(MYSQLI_ASSOC); // Recupera todas las filas que coinciden con el ID
 
 $sql = "SELECT * FROM formacion WHERE user_id = $user_id"; 
 $result = $conn->query($sql);
