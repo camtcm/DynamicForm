@@ -126,12 +126,12 @@
 
     <script>
         function addField(fieldName) {
-            var container = document.getElementById(fieldName + '-container');
+            var container = document.getElementById(fieldName + '-container'); // 'experiencia-container'
             var newField = document.createElement('div');
             newField.className = 'dynamic-field';
             newField.innerHTML = `
-                <input type="text" name="${fieldName}[${container.children.length}][titulo]" placeholder="Título">
-            `;
+                <input type="text" name="${fieldName}[${container.children.length}][titulo]" placeholder="Título"> 
+            `; // name="experiencia[1][titulo]"
 
             if (fieldName != 'idiomas') {
                 newField.innerHTML += `
@@ -146,14 +146,15 @@
             }
             
             newField.innerHTML+=`
-            <input type="text" name="${fieldName}[${container.children.length}][descripcion]" placeholder="Descripción">
+            <input type="text" name="${fieldName}[${container.children.length}][descripcion]" placeholder="Descripción"> 
             <button type="button" onclick="removeField(this)">Eliminar</button>
             `;
             
-            container.appendChild(newField);
+            container.appendChild(newField); // Agrega el nuevo campo al contenedor
         }
 
-        function removeField(button) {
+        function removeField(button) { // Pasa el botón presionado
+            // Elimina el elemento padre del button 
             button.parentElement.remove();
         }
     </script>
